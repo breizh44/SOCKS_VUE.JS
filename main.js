@@ -4,7 +4,8 @@ const app = Vue.createApp({
         return {
             product: 'Socks',
             image: './assets/images/socks_green.jpg',
-            url: 'http://polysoude.com'
+            inventory: 8,
+            onSale: false
         }
     }
 })
