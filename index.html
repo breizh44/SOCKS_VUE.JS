@@ -10,9 +10,19 @@
   </head>
   <body>
     <div id="app">
-      <h1>{{ product }}</h1>
-
-      <p>I love {{ description }}</p>
+      <div class="nav-bar"></div>
+      
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img v-bind:src="image">
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+            <a :href="url">Made by Polysoude</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Import App -->
@@ -20,7 +30,7 @@
 
     <!-- Mount App -->
     <script>
-      const mountedApp = app.mount('#app') //on monte l'application Vue.js au niveau de la div d'id="app"
+      const mountedApp = app.mount('#app')
     </script>
   </body>
 </html>
