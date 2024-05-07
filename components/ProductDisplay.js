@@ -19,7 +19,6 @@ app.component('product-display', {
           <p v-else>Out of Stock</p>
   
           <p>Shipping: {{ shipping }}</p>
-  
           <ul>
             <li v-for="detail in details">{{ detail }}</li>
           </ul>
@@ -39,6 +38,17 @@ app.component('product-display', {
             v-on:click="addToCart">
             Add to Cart
           </button>
+  
+          <!-- solution -->
+          <button 
+          class="button" 
+          :class="{ disabledButton: !inStock }" 
+          :disabled="!inStock" 
+          @click="removeFromCart">
+          Remove Item
+        </button>
+        <!-- solution -->
+  
         </div>
       </div>
     </div>`,
@@ -56,8 +66,13 @@ app.component('product-display', {
     },
     methods: {
         addToCart() {
-            this.cart += 1
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
         },
+        // solution
+        removeFromCart() {
+          this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
+        },
+        // solution
         updateVariant(index) {
             this.selectedVariant = index
         }
